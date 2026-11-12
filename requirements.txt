@@ -1,0 +1,25 @@
+# Use Python 3.10 - 3.12 (python.org build or `brew install python-tk@3.12`;
+# the macOS system Python ships a broken Tk 8.5).
+
+customtkinter>=5.2.2
+Pillow>=10.0        # renders the neumorphic shadows (neu.py)
+
+# pyannote.audio 4.x switched to torchcodec and a new auth API; stay on 3.x.
+pyannote.audio>=3.1.1,<4.0
+
+# pyannote 3.x relies on torchaudio APIs that were removed in 2.9.
+torch>=2.2,<2.9
+torchaudio>=2.2,<2.9
+
+# pyannote 3.x passes `use_auth_token` to huggingface_hub, removed in 1.0.
+huggingface_hub>=0.20,<1.0
+
+pydub>=0.25.1
+
+# pyannote 3.x still uses np.NaN, which numpy 2 removed.
+numpy<2
+
+# System dependency (not pip): ffmpeg, needed by pydub for MP3 decode/encode
+#   macOS:   brew install ffmpeg
+#   Windows: winget install ffmpeg
+#   Linux:   sudo apt install ffmpeg
